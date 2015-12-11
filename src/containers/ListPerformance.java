@@ -169,6 +169,10 @@ public class ListPerformance {
             container.addAll(new CountingIntegerList(size));
             return container;
         }
+
+        public static void run(List<Integer> list, List<Test<List<Integer>>> tests) {
+            new ListTester(list, tests).timedTest();
+        }
     }
 
     public static void main(String[] args) {
