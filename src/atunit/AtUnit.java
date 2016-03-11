@@ -23,7 +23,7 @@ public class AtUnit implements ProcessFiles.Strategy {
         if(failures == 0)
             System.out.println("OK (" + testsRun + " tests)");
         else {
-            System.out.println("(" + testsRun + " tests");
+            System.out.println("(" + testsRun + " tests)");
             System.out.println("\n>>> " + failures + " FAILURE" + (failures > 1 ? "S" : "") + " <<<");
             for(String failedTest : failedTests)
                 System.out.println(" " + failedTest);
@@ -53,17 +53,17 @@ public class AtUnit implements ProcessFiles.Strategy {
 
             if(cleanup == null)
                 cleanup = checkForCleanupMethod(method);
+        }
 
-            if(testMethods.size() > 0) {
-                if(creator == null) {
-                    try {
-                        if(!Modifier.isPublic(testClass.getDeclaredConstructor().getModifiers())) {
-                            System.out.println("Error: " + testClass + " default constructor must be public");
-                            System.exit(1);
-                        }
-                    } catch (NoSuchMethodException e) {
-
+        if(testMethods.size() > 0) {
+            if(creator == null) {
+                try {
+                    if(!Modifier.isPublic(testClass.getDeclaredConstructor().getModifiers())) {
+                        System.out.println("Error: " + testClass + " default constructor must be public");
+                        System.exit(1);
                     }
+                } catch (NoSuchMethodException e) {
+
                 }
             }
 
@@ -89,6 +89,7 @@ public class AtUnit implements ProcessFiles.Strategy {
                 }
 
                 System.out.println(success ? "" : "(failed)");
+
                 testsRun++;
 
                 if(!success) {

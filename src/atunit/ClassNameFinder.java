@@ -19,11 +19,9 @@ public class ClassNameFinder {
             int minorVersion = dataInputStream.readShort();
             int majorVersion = dataInputStream.readShort();
             int constant_pool_count = dataInputStream.readShort();
-            int[] constant_pool = new int[constant_pool_count];
 
-            for(int i = 0; i < constant_pool_count; i++) {
+            for(int i = 1; i < constant_pool_count; i++) {
                 int tag = dataInputStream.read();
-                int tableSize;
 
                 switch (tag) {
                     case 1:
@@ -65,7 +63,7 @@ public class ClassNameFinder {
 
             return classNameTable.get(offsetTable.get(this_class)).replace('/', '.');
         } catch (Exception e) {
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
     }
 
