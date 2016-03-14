@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="xom-1.2.10" level="project" />
+    <orderEntry type="library" exported="" name="javassist" level="project" />
   </component>
 </module>
